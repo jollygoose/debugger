@@ -1,6 +1,7 @@
 Latest Ubuntu LTS with some preinstalled packages and dotfiles that are handy for troubleshooting. Not exactly a 'light' image. Maybe looked into in the future.
 
 Packages installed:
+- ansible
 - iproute2
 - tcpdump
 - curl
@@ -15,5 +16,5 @@ Packages installed:
 - rsync
 - jq
 - ranger
-- -yq
+- yq
 - netcat
