@@ -3,6 +3,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC 
 WORKDIR /root
 RUN apt update && apt install \
+    ansible \
     iproute2 \
     tcpdump \
     curl \
@@ -20,8 +21,6 @@ RUN apt update && apt install \
     -yq \
     netcat
 RUN apt clean
-RUN python3 -m pip install ansible
-RUN ansible-pull main.yaml -U https://github.com/jollygoose/playbook-dotfiles
 RUN if [[ $(uname -m) == 'aarch64' ]]; then curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"; else curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"; fi
 RUN unzip awscliv2.zip
 RUN ./aws/install
