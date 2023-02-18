@@ -22,7 +22,7 @@ RUN apt update && apt install \
 RUN apt clean
 RUN python3 -m pip install ansible
 RUN ansible-pull main.yaml -U https://github.com/jollygoose/playbook-dotfiles
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-$(uname -m).zip" -o "awscliv2.zip"
+RUN if [[ $(uname -m) == 'aarch64' ]]; then curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"; else curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"; fi
 RUN unzip awscliv2.zip
 RUN ./aws/install
 CMD [ "sleep", "infinity" ]
