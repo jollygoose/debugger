@@ -17,7 +17,8 @@ RUN apt update && apt install \
     rsync \
     jq \
     ranger \
-    -yq
+    -yq \
+    netcat
 RUN apt clean
 RUN python3 -m pip install ansible
 RUN ansible-pull main.yaml -U https://github.com/jollygoose/playbook-dotfiles
