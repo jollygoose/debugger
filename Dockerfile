@@ -18,7 +18,8 @@ RUN apt update && apt install \
     rsync \
     jq \
     ranger \
-    netcat
+    netcat \
+    -yq
 RUN apt clean
 RUN if [[ $(uname -m) == 'aarch64' ]]; then curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"; else curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"; fi
 RUN unzip awscliv2.zip
