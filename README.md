@@ -16,5 +16,4 @@ Packages installed:
 - rsync
 - jq
 - ranger
-- yq
 - netcat
