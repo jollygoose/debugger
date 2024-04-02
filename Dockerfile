@@ -19,11 +19,11 @@ RUN apt update && apt install \
     telnet \
     traceroute \
     unzip \
+    vim \
     zip \
-    -yq
-RUN apt clean
-RUN ansible-pull main.yaml -U https://github.com/jollygoose/playbook-dotfiles
-RUN if [[ $(uname -m) == 'aarch64' ]]; then curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"; else curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"; fi
-RUN unzip awscliv2.zip
-RUN ./aws/install
+    zsh \
+    -yq &&\
+    apt clean &&\
+    ansible-pull main.yaml -U https://github.com/jollygoose/playbook-dotfiles &&\
+    if [[ $(uname -m) == 'aarch64' ]]; then curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip" && unzip awscliv2.zip && ~./aws/install; else curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip && ~./aws/install; fi
 CMD [ "sleep", "infinity" ]
