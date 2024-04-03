@@ -24,6 +24,5 @@ RUN apt update && apt install \
     zsh \
     -yq &&\
     apt clean &&\
-    ansible-pull main.yaml -U https://github.com/jollygoose/playbook-dotfiles &&\
     if [[ $(uname -m) == 'aarch64' ]]; then curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip" && unzip awscliv2.zip && ~./aws/install; else curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip && ~./aws/install; fi
-CMD [ "sleep", "infinity" ]
+CMD [ "sleep", "10000" ]
