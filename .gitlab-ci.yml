@@ -5,5 +5,7 @@ build:
     - docker:20.10.16-dind
   script:
     - echo "$CI_REGISTRY_PASSWORD" | docker login "$CI_REGISTRY" -u "$CI_REGISTRY_USER" --password-stdin
-    - docker build -t $CI_REGISTRY/jollygoose/debugger:latest .
-    - docker push $CI_REGISTRY/jollygoose/debugger:latest
+    # - docker build -t $CI_REGISTRY/jollygoose/debugger:latest .
+    - docker context create builder
+    - docker buildx create builder --use
+    - docker buildx build -t $CI_REGISTRY/jollygoose/debugger:latest --platform=linux/arm64,linux/amd64 . --push
